@@ -15,4 +15,4 @@ git clone https://github.com/cogito30/js_clock.git
 2) index.html를 브라우저로 열기
 
 ## Result
-[Clock 결과물](./result.png)
+![Clock 결과물](./result.png)
