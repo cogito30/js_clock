@@ -1,7 +1,6 @@
 function updateClock() {
-    // const timezone = document.getElementById('timezone');
-    // const now = new Date(new Date().toLocaleString('en-US', { timeZone: timezone.value }));
-    const now = new Date();
+    const timezone = document.getElementById('timezone');
+    const now = new Date(new Date().toLocaleString('en-US', { timeZone: timezone.value }));
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const date = String(now.getDate()).padStart(2, '0');

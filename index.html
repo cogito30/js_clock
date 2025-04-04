@@ -12,7 +12,17 @@
     </header>
 
     <main>
-        <section id="clock">
+        <div class="selector">
+            <span>Location: </span>
+            <select id="timezone">
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">New York (EST)</option>
+                <option value="Europe/London">London (GMT)</option>
+                <option value="Asia/Tokyo">Tokyo (JST)</option>
+                <option value="Asia/Seoul" selected>Seoul (KST)</option>
+            </select>
+        </div>
+        <section id="clock">    
             <div id="date">0000/00/00</div>
             <div id="day">(Monday)</div>
             <div id="time">00:00:00</div>
