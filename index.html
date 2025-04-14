@@ -82,14 +82,21 @@
             <button class="preset" data-minutes="25">25분</button>
             <button class="preset" data-minutes="60">1시간</button>
         </div>
-        
 
+        <div class="circular-timer">
+            <svg class="progress-ring" width="200" height="200">
+                <circle class="progress-ring__circle" stroke="red" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
+            </svg>
+            <div class="timer-text" id="pomodoro-time">25:00</div>
+        </div>
         <div class="timer-display" id="timer-display">00:00:00</div>
+        
         <div class="timer-controls">
             <button id="start-btn">▶️ 시작</button>
             <button id="pause-btn">⏸️ 일시정지</button>
             <button id="reset-btn">⏹️ 초기화</button>
         </div>
+
     </div>
 
 

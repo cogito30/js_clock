@@ -252,6 +252,31 @@ body.light-mode .timezone-select {
     margin-top: 10px;
 }
 
+/* 원형 막대 타이머 */
+.circular-timer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 1s linear;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #dd3333;
+}
+
+
 
 /* 태블릿 대응 */
 @media (min-width: 768px) {

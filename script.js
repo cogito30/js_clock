@@ -227,7 +227,7 @@ document.getElementById('save-settings').addEventListener('click', () => {
     longBreakDuration = longBreak * 60;
     longBreakCycle = cycle;
 
-    // ✅ localStorage 저장
+    // localStorage 저장
     localStorage.setItem('pomodoroSettings', JSON.stringify({
         focus,
         shortBreak,
@@ -258,3 +258,39 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('long-break-cycle-input').value = settings.cycle;
     }
 });
+
+/* 원형 막대 세팅 */
+const circle = document.querySelector('.progress-ring__circle');
+const radius = circle.r.baseVal.value;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = `${circumference}`;
+circle.style.strokeDashoffset = `${circumference}`;
+
+function setProgress(percent) {
+    const offset = circumference - (percent * circumference);
+    circle.style.strokeDashoffset = offset;
+}
+
+function updatePomodoroDisplay() {
+    const hours = Math.floor(pomodoroRemaining / 3600);
+    const minutes = Math.floor((pomodoroRemaining % 3600) / 60);
+    const seconds = pomodoroRemaining % 60;
+
+    const formattedTime = [
+        hours.toString().padStart(2, '0'),
+        minutes.toString().padStart(2, '0'),
+        seconds.toString().padStart(2, '0'),
+    ].join(':');
+
+    document.getElementById('pomodoro-time').textContent = formattedTime;
+
+    // 원형 진행률 갱신
+    const total = isFocusTime
+        ? focusDuration
+        : (pomodoroCount % longBreakCycle === 0 ? longBreakDuration : breakDuration);
+
+    const percent = pomodoroRemaining / total;
+    setProgress(percent);
+}
+
