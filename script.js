@@ -128,3 +128,71 @@ presetButtons.forEach((btn) => {
         // document.getElementById('start-btn').click();
     });
 });
+
+/* 뽀모도로 모드 */
+let isPomodoro = false;
+let isFocusTime = true;
+let pomodoroInterval;
+let pomodoroRemaining = 0;
+const focusDuration = 25 * 60; // 25분
+const breakDuration = 5 * 60;  // 5분
+
+const pomodoroToggle = document.getElementById('pomodoro-toggle');
+
+pomodoroToggle.addEventListener('click', () => {
+    isPomodoro = !isPomodoro;
+
+    if (isPomodoro) {
+        switchToPomodoroMode();
+    } else {
+        exitPomodoroMode();
+    }
+});
+
+function switchToPomodoroMode() {
+    alert('🍅 뽀모도로 모드 시작!\n25분 집중 후 5분 휴식이 반복됩니다.');
+
+    // 시계 숨기고 타이머 표시
+    clockMode.style.display = 'none';
+    timerMode.style.display = 'block';
+    modeToggleBtn.textContent = '🕒 시계 모드';
+
+    isFocusTime = true;
+    startPomodoroSession(focusDuration);
+}
+
+function exitPomodoroMode() {
+    alert('🍅 뽀모도로 모드 종료');
+    clearInterval(pomodoroInterval);
+    document.getElementById('timer-display').textContent = '00:00:00';
+}
+
+function startPomodoroSession(duration) {
+    pomodoroRemaining = duration;
+    updatePomodoroDisplay();
+
+    clearInterval(pomodoroInterval);
+    pomodoroInterval = setInterval(() => {
+        pomodoroRemaining--;
+
+        if (pomodoroRemaining <= 0) {
+            clearInterval(pomodoroInterval);
+            isFocusTime = !isFocusTime;
+
+            const nextDuration = isFocusTime ? focusDuration : breakDuration;
+            const msg = isFocusTime ? '🧠 다시 집중 시간입니다!' : '☕ 휴식 시간입니다!';
+            alert(msg);
+
+            startPomodoroSession(nextDuration);
+        } else {
+            updatePomodoroDisplay();
+        }
+    }, 1000);
+}
+
+function updatePomodoroDisplay() {
+    const hrs = String(Math.floor(pomodoroRemaining / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((pomodoroRemaining % 3600) / 60)).padStart(2, '0');
+    const secs = String(pomodoroRemaining % 60).padStart(2, '0');
+    document.getElementById('timer-display').textContent = `${hrs}:${mins}:${secs}`;
+}
