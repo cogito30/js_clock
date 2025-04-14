@@ -84,6 +84,24 @@ body.light-mode .clock-container .zone {
     color: #222;
 }
 
+.timezone-select {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #666;
+    background: #000;
+    color: #fff;
+    font-size: 0.9rem;
+}
+body.light-mode .timezone-select {
+    background: #fff;
+    color: #000;
+}
+
+
+
 /* 태블릿 대응 */
 @media (min-width: 768px) {
     .time {

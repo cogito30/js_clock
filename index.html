@@ -6,8 +6,10 @@
     <title>Clock</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
 </head>
 <body>
+    <button id="toggle-mode" class="toggle-btn">🌗 다크모드 전환 </button>
     <div class="clock-container">
         <div class="day" id="day">월요일</div>
         <div class="date" id="date">2025.04.14</div>
@@ -19,8 +21,15 @@
             <span id="seconds">00</span>
         </div>        
         <div class="zone" id="zone">KST (UTC+9)</div>
-        <button id="toggle-mode" class="toggle-btn">🌗 다크모드 전환 </button>
     </div>
+    <select id="timezone-select" class="timezone-select">
+        <option value="Asia/Seoul">KST (서울)</option>
+        <option value="UTC">UTC</option>
+        <option value="America/New_York">EST (뉴욕)</option>
+        <option value="Europe/London">GMT (런던)</option>
+        <option value="Asia/Tokyo">JST (도쿄)</option>
+    </select>
+    
 
     <script src="script.js"></script>
 </body>
