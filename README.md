@@ -10,6 +10,7 @@ HTML, CSS, JavaScript를 활용하여 날짜와 요일, 시각을 표시하는 �
 - 기준 시간 선택
 - 타이머모드
 - 타이머 프리셋
+- 뽀모도르 기능
 
 
 ## How To Use
@@ -20,13 +21,13 @@ git clone https://github.com/cogito30/js_clock2.git
 2) index.html를 브라우저로 열기
 
 ## Result
-![Clock 결과물1](./result.png)
-![Clock 결과물2](./result2.png)
-![Clock 결과물3](./result3.png)
-![Clock 결과물4](./result4.gif)
-![Clock 결과물5](./result5.gif)
-![Clock 결과물6](./result6.png)
-![Clock 결과물7](./result7.png)
-![Clock 결과물8](./result8.png)
-![Clock 결과물9](./result9.png)
-![Clock 결과물10](./result10.gif)
+![Clock 결과물1](./result/result.png)
+![Clock 결과물2](./result/result2.png)
+![Clock 결과물3](./result/result3.png)
+![Clock 결과물4](./result/result4.gif)
+![Clock 결과물5](./result/result5.gif)
+![Clock 결과물6](./result/result6.png)
+![Clock 결과물7](./result/result7.png)
+![Clock 결과물8](./result/result8.png)
+![Clock 결과물9](./result/result9.png)
+![Clock 결과물10](./result/result10.gif)
