@@ -1,7 +1,8 @@
+/* 붉은색 스타일 */
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: #000;
-    color: #00ff88;
+    color: #ff3b3b;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,19 +19,19 @@ body {
 .date,
 .time,
 .zone {
-    text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+    text-shadow: 0 0 5px #ff3b3b, 0 0 10px #ff3b3b;
 }
 
 .day {
     font-size: 1.2rem;
     margin-bottom: 0.3rem;
-    color: #33ffcc;
+    color: #ff6666;
 }
 
 .date {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #33ffcc;
+    color: #ff6666;
 }
 
 .time {
@@ -38,12 +39,12 @@ body {
     font-weight: bold;
     margin-bottom: 1rem;
     letter-spacing: 2px;
-    color: #00ff88;
+    color: #ff3b3b;
 }
 
 .zone {
     font-size: 1rem;
-    color: #66ffcc;
+    color: #ff8080;
 }
 
 .blink {
@@ -56,7 +57,7 @@ body {
     }
 }
 
-/* 태블릿 대응 */
+/* 태블릿 */
 @media (min-width: 768px) {
     .time {
         font-size: 5rem;
@@ -75,7 +76,7 @@ body {
     }
 }
 
-/* 데스크탑 대응 */
+/* 데스크탑 */
 @media (min-width: 1024px) {
     .time {
         font-size: 6rem;

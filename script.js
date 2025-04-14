@@ -17,7 +17,9 @@ function updateClock() {
     // DOM 업데이트
     document.getElementById('day').textContent = days[now.getDay()];
     document.getElementById('date').textContent = `${year}.${month}.${date}`;
-    document.getElementById('time').textContent = `${hours} : ${minutes} : ${seconds}`;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
     document.getElementById('zone').textContent = 'KST (UTC+9)';
 }
 
