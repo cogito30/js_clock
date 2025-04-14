@@ -23,3 +23,4 @@ git clone https://github.com/cogito30/js_clock2.git
 ![Clock 결과물4](./result4.gif)
 ![Clock 결과물5](./result5.gif)
 ![Clock 결과물6](./result6.png)
+![Clock 결과물7](./result7.png)
