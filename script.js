@@ -34,3 +34,15 @@ toggleBtn.addEventListener('click', () => {
 // 처음 실행 + 1초마다 갱신
 updateClock();
 setInterval(updateClock, 1000);
+
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+            alert(`전체화면 전환 실패: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+});

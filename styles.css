@@ -84,6 +84,26 @@ body.light-mode .clock-container .zone {
     color: #222;
 }
 
+.fullscreen-btn {
+    position: fixed;
+    top: 20px;
+    right: 150px;
+    padding: 8px 16px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode .fullscreen-btn {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
 .timezone-select {
     position: fixed;
     bottom: 20px;
@@ -99,8 +119,6 @@ body.light-mode .timezone-select {
     background: #fff;
     color: #000;
 }
-
-
 
 /* 태블릿 대응 */
 @media (min-width: 768px) {
