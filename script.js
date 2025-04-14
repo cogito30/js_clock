@@ -1,3 +1,4 @@
+/* 시계모드 */
 const DateTime = luxon.DateTime;
 const timezoneSelect = document.getElementById('timezone-select');
 
@@ -26,15 +27,19 @@ function updateClock() {
     document.getElementById('zone').textContent = selectedZone;
 }
 
-const toggleBtn = document.getElementById('toggle-mode');
-toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-});
+
 
 // 처음 실행 + 1초마다 갱신
 updateClock();
 setInterval(updateClock, 1000);
 
+/* 토글버튼 */
+const toggleBtn = document.getElementById('toggle-mode');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+});
+
+/* 전체화면 모드 */
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 
 fullscreenBtn.addEventListener('click', () => {
@@ -45,4 +50,81 @@ fullscreenBtn.addEventListener('click', () => {
     } else {
         document.exitFullscreen();
     }
+});
+
+/* 타이머모드 */
+let countdownInterval;
+let remainingSeconds = 0;
+let isPaused = false;
+
+const modeToggleBtn = document.getElementById('mode-toggle');
+const clockMode = document.getElementById('clock-mode');
+const timerMode = document.getElementById('timer-mode');
+
+modeToggleBtn.addEventListener('click', () => {
+    const isClockVisible = clockMode.style.display !== 'none';
+    clockMode.style.display = isClockVisible ? 'none' : 'block';
+    timerMode.style.display = isClockVisible ? 'block' : 'none';
+    modeToggleBtn.textContent = isClockVisible ? '🕒 시계 모드' : '⏳ 타이머 모드';
+
+    // 타이머 초기화 시 자동 정지
+    clearInterval(countdownInterval);
+    document.getElementById('timer-display').textContent = '00:00:00';
+});
+
+document.getElementById('start-btn').addEventListener('click', () => {
+    if (!isPaused) {
+        const h = parseInt(document.getElementById('timer-hours').value) || 0;
+        const m = parseInt(document.getElementById('timer-minutes').value) || 0;
+        const s = parseInt(document.getElementById('timer-seconds').value) || 0;
+        remainingSeconds = h * 3600 + m * 60 + s;
+    }
+
+    if (remainingSeconds > 0) {
+        isPaused = false;
+        countdownInterval = setInterval(() => {
+            if (remainingSeconds <= 0) {
+                clearInterval(countdownInterval);
+                alert('⏰ 타이머 완료!');
+                return;
+            }
+
+            remainingSeconds--;
+            const hrs = String(Math.floor(remainingSeconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((remainingSeconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(remainingSeconds % 60).padStart(2, '0');
+
+            document.getElementById('timer-display').textContent = `${hrs}:${mins}:${secs}`;
+        }, 1000);
+    }
+});
+
+document.getElementById('pause-btn').addEventListener('click', () => {
+    isPaused = true;
+    clearInterval(countdownInterval);
+});
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+    clearInterval(countdownInterval);
+    remainingSeconds = 0;
+    isPaused = false;
+    document.getElementById('timer-display').textContent = '00:00:00';
+});
+
+/* 프레셋 버튼 */
+const presetButtons = document.querySelectorAll('.preset');
+
+presetButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const minutes = parseInt(btn.getAttribute('data-minutes'), 10);
+        const totalSeconds = minutes * 60;
+
+        document.getElementById('timer-hours').value = Math.floor(totalSeconds / 3600);
+        document.getElementById('timer-minutes').value = Math.floor((totalSeconds % 3600) / 60);
+        document.getElementById('timer-seconds').value = totalSeconds % 60;
+
+        // 바로 시작하고 싶으면 아래 두 줄을 추가
+        // isPaused = false;
+        // document.getElementById('start-btn').click();
+    });
 });

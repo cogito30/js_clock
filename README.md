@@ -8,6 +8,9 @@ HTML, CSS, JavaScript를 활용하여 날짜와 요일, 시각을 표시하는 �
 - LED 디지털 스타일 시계
 - 다크모드
 - 기준 시간 선택
+- 타이머모드
+- 타이머 프리셋
+
 
 ## How To Use
 1) repository 다운받기
@@ -24,3 +27,5 @@ git clone https://github.com/cogito30/js_clock2.git
 ![Clock 결과물5](./result5.gif)
 ![Clock 결과물6](./result6.png)
 ![Clock 결과물7](./result7.png)
+![Clock 결과물8](./result8.png)
+![Clock 결과물9](./result9.png)

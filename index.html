@@ -9,9 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
 </head>
 <body>
+    <div class="mode-switch">
+        <button id="mode-toggle">⏳ 타이머 모드</button>
+    </div>
+
     <button id="toggle-mode" class="toggle-btn">🌗 다크모드 전환 </button>
     <button id="fullscreen-btn" class="fullscreen-btn">🖥️ 전체화면</button>
-    <div class="clock-container">
+    
+    <div class="clock-container" id="clock-mode">
         <div class="day" id="day">월요일</div>
         <div class="date" id="date">2025.04.14</div>
         <div class="time">
@@ -30,7 +35,30 @@
         <option value="Europe/London">GMT (런던)</option>
         <option value="Asia/Tokyo">JST (도쿄)</option>
     </select>
-    
+
+    <div class="timer-container" id="timer-mode" style="display: none;">
+        
+        <div class="time-inputs">
+            <input type="number" id="timer-hours" placeholder="시" min="0">
+            <input type="number" id="timer-minutes" placeholder="분" min="0">
+            <input type="number" id="timer-seconds" placeholder="초" min="0">
+        </div>
+        <div class="preset-buttons">
+            <button class="preset" data-minutes="1">1분</button>
+            <button class="preset" data-minutes="5">5분</button>
+            <button class="preset" data-minutes="10">10분</button>
+            <button class="preset" data-minutes="25">25분</button>
+            <button class="preset" data-minutes="60">1시간</button>
+        </div>
+        
+
+        <div class="timer-display" id="timer-display">00:00:00</div>
+        <div class="timer-controls">
+            <button id="start-btn">▶️ 시작</button>
+            <button id="pause-btn">⏸️ 일시정지</button>
+            <button id="reset-btn">⏹️ 초기화</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
