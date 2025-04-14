@@ -23,6 +23,11 @@ function updateClock() {
     document.getElementById('zone').textContent = 'KST (UTC+9)';
 }
 
+const toggleBtn = document.getElementById('toggle-mode');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+});
+
 // 처음 실행 + 1초마다 갱신
 updateClock();
 setInterval(updateClock, 1000);
