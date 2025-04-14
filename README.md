@@ -15,3 +15,4 @@ git clone https://github.com/cogito30/js_clock2.git
 
 ## Result
 ![Clock 결과물1](./result.png)
+![Clock 결과물2](./result2.png)

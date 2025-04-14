@@ -1,7 +1,7 @@
 body {
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-    background-color: #fdfdfd;
-    color: #222;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #00ff88;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,23 +14,34 @@ body {
     text-align: center;
 }
 
+.day,
+.date,
+.time,
+.zone {
+    text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+}
+
 .day {
     font-size: 1.2rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
+    color: #33ffcc;
 }
 
 .date {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #33ffcc;
 }
 
 .time {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    letter-spacing: 2px;
+    color: #00ff88;
 }
 
 .zone {
     font-size: 1rem;
-    color: #666;
+    color: #66ffcc;
 }
