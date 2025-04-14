@@ -227,6 +227,34 @@ document.getElementById('save-settings').addEventListener('click', () => {
     longBreakDuration = longBreak * 60;
     longBreakCycle = cycle;
 
+    // ✅ localStorage 저장
+    localStorage.setItem('pomodoroSettings', JSON.stringify({
+        focus,
+        shortBreak,
+        longBreak,
+        cycle
+    }));
+
     alert('✅ 설정이 저장되었습니다!');
     document.getElementById('settings-modal').style.display = 'none';
+});
+
+// 초기 실행시 추가
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('pomodoroSettings');
+    if (saved) {
+        const settings = JSON.parse(saved);
+
+        // 값 적용
+        focusDuration = settings.focus * 60;
+        breakDuration = settings.shortBreak * 60;
+        longBreakDuration = settings.longBreak * 60;
+        longBreakCycle = settings.cycle;
+
+        // 입력창에도 반영
+        document.getElementById('focus-duration-input').value = settings.focus;
+        document.getElementById('short-break-input').value = settings.shortBreak;
+        document.getElementById('long-break-input').value = settings.longBreak;
+        document.getElementById('long-break-cycle-input').value = settings.cycle;
+    }
 });
