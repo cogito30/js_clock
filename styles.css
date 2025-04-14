@@ -1,0 +1,36 @@
+body {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    background-color: #fdfdfd;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+.day {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.date {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.time {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.zone {
+    font-size: 1rem;
+    color: #666;
+}
