@@ -12,11 +12,40 @@
     <div class="mode-switch">
         <button id="mode-toggle">⏳ 타이머 모드</button>
         <button id="pomodoro-toggle">🍅 뽀모도로 모드</button>
-
+        <div class="settings-modal" id="settings-modal">
+            <div class="settings-content">
+                <h2>🛠 뽀모도로 설정</h2>
+                <label>
+                    집중 시간 (분):
+                    <input type="number" id="focus-duration-input" value="25" min="1">
+                </label>
+                <label>
+                    짧은 휴식 (분):
+                    <input type="number" id="short-break-input" value="5" min="1">
+                </label>
+                <label>
+                    긴 휴식 (분):
+                    <input type="number" id="long-break-input" value="15" min="1">
+                </label>
+                <label>
+                    긴 휴식 주기 (횟수):
+                    <input type="number" id="long-break-cycle-input" value="4" min="1">
+                </label>
+                <div class="settings-buttons">
+                    <button id="save-settings">저장</button>
+                    <button id="close-settings">닫기</button>
+                </div>
+            </div>
+        </div>
+        
+        <button id="open-settings">⚙️ 설정</button>
+        
     </div>
+    
 
     <button id="toggle-mode" class="toggle-btn">🌗 다크모드 전환 </button>
     <button id="fullscreen-btn" class="fullscreen-btn">🖥️ 전체화면</button>
+    
     
     <div class="clock-container" id="clock-mode">
         <div class="day" id="day">월요일</div>
@@ -37,6 +66,7 @@
         <option value="Europe/London">GMT (런던)</option>
         <option value="Asia/Tokyo">JST (도쿄)</option>
     </select>
+    
 
     <div class="timer-container" id="timer-mode" style="display: none;">
         
@@ -62,7 +92,6 @@
         </div>
     </div>
 
-    
 
     <script src="script.js"></script>
 </body>

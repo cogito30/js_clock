@@ -134,8 +134,11 @@ let isPomodoro = false;
 let isFocusTime = true;
 let pomodoroInterval;
 let pomodoroRemaining = 0;
-const focusDuration = 25 * 60; // 25분
-const breakDuration = 5 * 60;  // 5분
+let focusDuration = 25 * 60; // 25분
+let breakDuration = 5 * 60; // 5분
+let longBreakDuration = 15 * 60;
+let longBreakCycle = 4;
+let pomodoroCount = 0;
 
 const pomodoroToggle = document.getElementById('pomodoro-toggle');
 
@@ -150,7 +153,7 @@ pomodoroToggle.addEventListener('click', () => {
 });
 
 function switchToPomodoroMode() {
-    alert('🍅 뽀모도로 모드 시작!\n25분 집중 후 5분 휴식이 반복됩니다.');
+    alert(`🍅 뽀모도로 모드 시작!\n${Math.floor(focusDuration/3600)}시간 ${focusDuration%3600/60}분 집중 후 ${Math.floor(breakDuration/3600)}시간 ${breakDuration/60}분 휴식이 반복됩니다.`);
 
     // 시계 숨기고 타이머 표시
     clockMode.style.display = 'none';
@@ -179,7 +182,13 @@ function startPomodoroSession(duration) {
             clearInterval(pomodoroInterval);
             isFocusTime = !isFocusTime;
 
-            const nextDuration = isFocusTime ? focusDuration : breakDuration;
+            if (!isFocusTime) {
+                pomodoroCount++;
+            }
+            
+            const nextDuration = isFocusTime
+                ? focusDuration
+                : (pomodoroCount % longBreakCycle === 0 ? longBreakDuration : breakDuration);
             const msg = isFocusTime ? '🧠 다시 집중 시간입니다!' : '☕ 휴식 시간입니다!';
             alert(msg);
 
@@ -196,3 +205,28 @@ function updatePomodoroDisplay() {
     const secs = String(pomodoroRemaining % 60).padStart(2, '0');
     document.getElementById('timer-display').textContent = `${hrs}:${mins}:${secs}`;
 }
+
+/* 뽀모도로 설정 */ 
+
+document.getElementById('open-settings').addEventListener('click', () => {
+    document.getElementById('settings-modal').style.display = 'block';
+});
+
+document.getElementById('close-settings').addEventListener('click', () => {
+    document.getElementById('settings-modal').style.display = 'none';
+});
+
+document.getElementById('save-settings').addEventListener('click', () => {
+    const focus = parseInt(document.getElementById('focus-duration-input').value, 10);
+    const shortBreak = parseInt(document.getElementById('short-break-input').value, 10);
+    const longBreak = parseInt(document.getElementById('long-break-input').value, 10);
+    const cycle = parseInt(document.getElementById('long-break-cycle-input').value, 10);
+
+    focusDuration = focus * 60;
+    breakDuration = shortBreak * 60;
+    longBreakDuration = longBreak * 60;
+    longBreakCycle = cycle;
+
+    alert('✅ 설정이 저장되었습니다!');
+    document.getElementById('settings-modal').style.display = 'none';
+});
